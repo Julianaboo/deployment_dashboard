@@ -309,7 +309,6 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
 const tasks=[
  // ── TRAINING ──
  {o:"Jenney",m:"Training",s:"End User Training (EUT)",a:"End User Training (EUT) - SPL GIS",r:"Completed",S:"2026-03-23",E:"2026-04-15",st:"Completed",rm:"Completed 100% on 15-Apr-2026.",p:100,inTraining:true},
- {o:"Jenney",m:"Training",s:"End User Training (EUT)",a:"End User Training (EUT) - SPL SOM EO",r:"Green",S:"2026-04-20",E:"2026-04-20",st:"Launched today (20-Apr)",rm:"2 SOM EO modules launched on 20-Apr-2026 (small group). % to be updated upon completion.",p:0,inTraining:true},
  {o:"Jenney",m:"Training",s:"End User Training (EUT)",a:"End User Training (EUT) - ILT GIS",r:"Green",S:"2026-04-09",E:"2026-04-24",st:"67% complete",rm:"9 GIS ILT modules scheduled from 9-Apr to 24-Apr-2026. 6 of 9 sessions completed.",p:66.667,inTraining:true},
  {o:"Jenney",m:"Training",s:"System Admin KT (SAKT)",a:"System Administrators Knowledge Transfer (SAKT)",r:"Not started",S:"2026-05-05",E:"2026-05-06",st:"Post-go-live. Not started",rm:"SAKT-ILT: 3 WFM modules on 5-6 May 2026.",p:0,excludeFromTrainingPct:true},
  // ── COMMS ──
@@ -322,8 +321,8 @@ const tasks=[
  {o:"P&A",m:"Comms",s:"External Portal Banner",a:"FRC Portal",r:"Completed",S:"2026-04-01",E:"2026-04-10",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Comms",s:"External Portal Banner",a:"PRP",r:"Completed",S:"2026-04-01",E:"2026-04-15",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Comms",s:"External Portal Banner",a:"End User Portal",r:"Completed",S:"2026-04-01",E:"2026-04-14",st:"Completed",rm:"",p:100},
- {o:"P&A",m:"Comms",s:"External Portal Banner",a:"Public Portal (Coverage Check)",r:"Not Required",S:"2026-04-14",E:"2026-04-14",st:"Not Required",rm:"No announcement on maintenance window required - no system downtime.",p:0},
- {o:"P&A",m:"Comms",s:"External Portal Banner",a:"Diversion Portal",r:"Not Required",S:"2026-04-14",E:"2026-04-14",st:"Not Required",rm:"No announcement required. New section under Corp Page with updated links for Diversion and Manhole Levelling.",p:0},
+ {o:"P&A",m:"Comms",s:"External Portal Banner",a:"Public Portal (Coverage Check)",r:"Not Required",S:"2026-04-14",E:"2026-04-14",st:"Not Required",rm:"No announcement on maintenance window required - no system downtime.",p:100},
+ {o:"P&A",m:"Comms",s:"External Portal Banner",a:"Diversion Portal",r:"Not Required",S:"2026-04-14",E:"2026-04-14",st:"Not Required",rm:"No announcement required. New section under Corp Page with updated links for Diversion and Manhole Levelling.",p:100},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #1",r:"Completed",S:"2026-03-13",E:"2026-03-13",st:"Completed",rm:"Appointment slots blocking",p:100},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #2",r:"Completed",S:"2026-04-03",E:"2026-04-03",st:"Completed",rm:"Cutover/Switchover Calendar",p:100},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #3",r:"Completed",S:"2026-04-09",E:"2026-04-09",st:"Completed",rm:"Maintenance Window Calendar E1 & E2. Pending NLT review.",p:100},
@@ -389,16 +388,10 @@ const tasks=[
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"iValua App user verification",r:"Completed",S:"2026-03-23",E:"2026-04-07",st:"Completed",rm:"User verification closed, 1 pending user to test after Go-live",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"Helix App user verification",r:"Completed",S:"2026-03-23",E:"2026-04-07",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"IRD (plus Qlik) App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-17",st:"Completed",rm:"User verification closed. Total: 88 | Completed: 86 | Remaining: 2 pending to test after Go-Live (OIM=1; PBDP=1).",p:100},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"OSB App user verification",r:"Completed",S:"2026-03-19",E:"2026-03-31",st:"Completed",rm:"",p:100},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"B2B Gateway App user verification",r:"Completed",S:"2026-03-19",E:"2026-03-31",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"SWP App user verification",r:"RED",S:"2026-03-19",E:"2026-04-20",st:"91% - RL Admin verification pending",rm:"NLT User Verification completed. 1 issue reported regarding F5 refresh — to be fixed after go-live. RL Admin verification: 78% completed. Total: 9 | Completed: 7 | Pending: 2 (StarHub: 2 of 5 admins; Tata Comms: 1 of 1). RL User Verification in progress.",p:91},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"Internal Portal App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-07",st:"Completed",rm:"User verification closed, 1 pending user to test after Go-live",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"External Portal App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-07",st:"Completed",rm:"",p:100},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"BRE App user verification",r:"Completed",S:"2026-03-19",E:"2026-03-30",st:"Completed",rm:"",p:100},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"DMS App user verification",r:"Completed",S:"2026-03-19",E:"2026-03-30",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"SVZ App user verification",r:"Completed",S:"2026-03-23",E:"2026-04-07",st:"Completed",rm:"User verification closed, pending user to test after Go-live",p:100},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"AWS SFTP App user verification",r:"Completed",S:"2026-03-20",E:"2026-04-07",st:"Completed",rm:"",p:100},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"Splunk App user verification",r:"Completed",S:"2026-03-20",E:"2026-03-31",st:"Completed",rm:"",p:100},
  // ── DATA MIGRATION ──
  {o:"Inam",m:"Data Migration",s:"E1 migration",a:"E1 Extraction",r:"Completed",S:"2026-04-10",E:"2026-04-12",st:"Completed",rm:"Completed.",p:100},
  {o:"Inam",m:"Data Migration",s:"E1 migration",a:"[Checkpoint 1] E1: Extraction Review & Sign Off",r:"Completed",S:"2026-04-16",E:"2026-04-16",st:"Completed",rm:"",p:100},
@@ -428,8 +421,8 @@ function catPct(menu){
   if(menu==="Training"){
     const eutTasks=tasks.filter(t=>t.m===menu&&!t.excludeFromTrainingPct);
     if(!eutTasks.length)return 0;
-    // Weighted: EUT - SPL GIS = 95%, EUT - SPL SOM EO = 2.5%, EUT - ILT GIS = 2.5%
-    const weights={"End User Training (EUT) - SPL GIS":0.95,"End User Training (EUT) - SPL SOM EO":0.025,"End User Training (EUT) - ILT GIS":0.025};
+    // Weighted: EUT - SPL GIS = 95%, EUT - ILT GIS = 2.5% (SPL SOM EO removed per 20-Apr update)
+    const weights={"End User Training (EUT) - SPL GIS":0.95,"End User Training (EUT) - ILT GIS":0.025};
     let weighted=0,totalW=0;
     eutTasks.forEach(t=>{
       const w=weights[t.a]!==undefined?weights[t.a]:0;
@@ -445,8 +438,8 @@ function subPct(menu,sub){
   if(menu==="Training") ts=ts.filter(t=>!t.excludeFromTrainingPct);
   if(!ts.length)return 0;
   if(menu==="Training"&&sub==="End User Training (EUT)"){
-    // Weighted: EUT - SPL GIS = 95%, EUT - SPL SOM EO = 2.5%, EUT - ILT GIS = 2.5%
-    const weights={"End User Training (EUT) - SPL GIS":0.95,"End User Training (EUT) - SPL SOM EO":0.025,"End User Training (EUT) - ILT GIS":0.025};
+    // Weighted: EUT - SPL GIS = 95%, EUT - ILT GIS = 2.5% (SPL SOM EO removed per 20-Apr update)
+    const weights={"End User Training (EUT) - SPL GIS":0.95,"End User Training (EUT) - ILT GIS":0.025};
     let weighted=0,totalW=0;
     ts.forEach(t=>{
       const w=weights[t.a]!==undefined?weights[t.a]:0;
