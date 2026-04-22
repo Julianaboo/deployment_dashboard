@@ -273,6 +273,7 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
   <button class="tab on"  onclick="sw(0)">📊 Gantt Overview</button>
   <button class="tab"     onclick="sw(1)">📋 Operational Dashboard</button>
   <button class="tab"     onclick="sw(2)">🎯 Executive View</button>
+  <button class="tab"     onclick="sw(3)">✅ Go-Live Checklist</button>
 </nav>
 
 <div class="pane on" id="p0">
@@ -296,6 +297,10 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
 
 <div class="pane" id="p2">
   <div id="exec"></div>
+</div>
+
+<div class="pane" id="p3">
+  <div id="checklist"></div>
 </div>
 
 <div class="tip" id="tip"></div>
@@ -481,7 +486,9 @@ function grp(){
 function sw(i){
   document.querySelectorAll(".pane").forEach((p,j)=>p.classList.toggle("on",j===i));
   document.querySelectorAll(".tab").forEach((b,j)=>b.classList.toggle("on",j===i));
+  if(i===3&&!clBuilt){buildChecklist();clBuilt=true;}
 }
+let clBuilt=false;
 
 // ── DATE HEADER — every cell gets its day number ──
 function buildDates(){
@@ -777,6 +784,156 @@ function buildExec(){
         <div class="ex-sec"><div class="ex-sec-t">🗓️ Deployment Milestone Timeline</div>${tl}</div>
       </div>
     </div>`;
+}
+
+// ── GO-LIVE CHECKLIST ──
+const checklistItems = [
+  {sn:1,cat:"Application and Technical Readiness",mile:"SIT (JET) Testing",crit:"Signed Off",act:"Signed Off",rag:"GREEN",comp:"24 Nov 2025",rm:"Completed and sign-off."},
+  {sn:2,cat:"Application and Technical Readiness",mile:"UAT (Regression) Testing",crit:"Signed Off",act:"Signed Off",rag:"GREEN",comp:"12 Mar 2026",rm:"Completed and sign-off, with conditional open items for Sev-3 defects. User retests (5) retested and closed. Defect fixes (7) planned with target dates are fixed, target to deploy after Go-Live."},
+  {sn:3,cat:"Application and Technical Readiness",mile:"RL Testing",crit:"Verified",act:"Verified",rag:"GREEN",comp:"10 Nov 2025",rm:"Completed."},
+  {sn:4,cat:"Application and Technical Readiness",mile:"Retained System Testing",crit:"Verified",act:"Verified",rag:"GREEN",comp:"26 Feb 2026",rm:"Completed, with conditional open item for Singtel GIS Interface (Singtel→NLT) to be Post Go-Live."},
+  {sn:5,cat:"Application and Technical Readiness",mile:"Performance Testing",crit:"Signed Off",act:"Signed Off",rag:"GREEN",comp:"25 Mar 2026",rm:"Completed and sign-off."},
+  {sn:6,cat:"Application and Technical Readiness",mile:"Penetration (VAPT) Testing",crit:"Signed Off",act:"Signed Off",rag:"GREEN",comp:"18 Mar 2026",rm:"Completed and sign-off. Conditional open items: 5 Sev-3/4 items to be fixed Post Go-Live."},
+  {sn:7,cat:"Application and Technical Readiness",mile:"Disaster Recovery Testing",crit:"Signed Off",act:"Signed Off",rag:"GREEN",comp:"18 Mar 2026",rm:"Completed and sign-off."},
+  {sn:8,cat:"Data Migration Readiness",mile:"FDR Closure",crit:"Signed Off",act:"Signed Off",rag:"GREEN",comp:"18 Mar 2026",rm:"Completed and sign-off."},
+  {sn:9,cat:"Business & Operational Readiness",mile:"End User Training (EUT): NON-GIS",crit:"Completed",act:"Completed",rag:"GREEN",comp:"15 Dec 2025",rm:"Completed."},
+  {sn:10,cat:"Business & Operational Readiness",mile:"End User Training (EUT): GIS",crit:"Completed",act:"",rag:"GREEN",comp:"Target: 24-Apr-26",rm:"Training target to complete on 24-Apr-2026."},
+  {sn:11,cat:"Business & Operational Readiness",mile:"System Admin Training (SAKT): NON-WFM",crit:"Completed",act:"Completed",rag:"GREEN",comp:"16 Dec 2025",rm:"Completed."},
+  {sn:12,cat:"Business & Operational Readiness",mile:"System Admin Training (SAKT): WFM",crit:"N/A (Post Go-Live)",act:"N/A (Post Go-Live)",rag:"GREEN",comp:"Target: 6-May-26",rm:"Agreed with NLT IT to be conducted post Go-Live (5-May to 6-May 2026)."},
+  {sn:13,cat:"Business & Operational Readiness",mile:"Post Go Live Support (PGLS) Plan",crit:"Reviewed",act:"",rag:"GREEN",comp:"Target: 21-Apr-26",rm:"Final review planned for 21-Apr-2026."},
+  {sn:14,cat:"Business & Operational Readiness",mile:"Non-Prod Environment Sync-Up (Data and Application Code)",crit:"Reviewed",act:"",rag:"GREEN",comp:"Target: 28-Apr-26",rm:"1) Prod Data Sync up to Pre-Prod Environment  2) Application Code Sync up to Pre-Prod and Dev Environment"},
+  {sn:15,cat:"Production Readiness (Apollo Application)",mile:"OSM",crit:"Verified",act:"Verified",rag:"GREEN",comp:"08 Apr 2026",rm:""},
+  {sn:16,cat:"Production Readiness (Apollo Application)",mile:"UIM",crit:"Verified",act:"Verified",rag:"GREEN",comp:"10 Apr 2026",rm:"Remaining 1 user to test after Go-live."},
+  {sn:17,cat:"Production Readiness (Apollo Application)",mile:"vxField",crit:"Verified",act:"",rag:"AMBER",comp:"Target: 22-Apr-26",rm:"Web: 84% completed (Remaining: 33 Contractor Controller user verification in progress). Mobile: 43% completed (Remaining: 8 NLT FE + 128 Contractor FE user verification in progress)."},
+  {sn:18,cat:"Production Readiness (Apollo Application)",mile:"iValua",crit:"Verified",act:"Verified",rag:"GREEN",comp:"10 Apr 2026",rm:""},
+  {sn:19,cat:"Production Readiness (Apollo Application)",mile:"Helix",crit:"Verified",act:"Verified",rag:"GREEN",comp:"07 Apr 2026",rm:""},
+  {sn:20,cat:"Production Readiness (Apollo Application)",mile:"IRD (plus Qlik)",crit:"Verified",act:"Verified",rag:"GREEN",comp:"17 Apr 2026",rm:"Remaining 2 user to test after Go-live (OIM=1; PBDP=1)."},
+  {sn:21,cat:"Production Readiness (Apollo Application)",mile:"OSB",crit:"Verified",act:"Verified",rag:"GREEN",comp:"30 Mar 2026",rm:""},
+  {sn:22,cat:"Production Readiness (Apollo Application)",mile:"B2B Gateway",crit:"Verified",act:"Verified",rag:"GREEN",comp:"27 Mar 2026",rm:""},
+  {sn:23,cat:"Production Readiness (Apollo Application)",mile:"SWP",crit:"Verified",act:"",rag:"AMBER",comp:"Target: 22-Apr-26",rm:"NLT user verification: 100% completed. RL Admin user verification: 78% completed (Remaining 2 RL admin user verification pending — StarHub & Tata Communications)."},
+  {sn:24,cat:"Production Readiness (Apollo Application)",mile:"Internal Portal",crit:"Verified",act:"Verified",rag:"GREEN",comp:"10 Apr 2026",rm:""},
+  {sn:25,cat:"Production Readiness (Apollo Application)",mile:"External Portal",crit:"Verified",act:"Verified",rag:"GREEN",comp:"08 Apr 2026",rm:""},
+  {sn:26,cat:"Production Readiness (Apollo Application)",mile:"BRE",crit:"Verified",act:"Verified",rag:"GREEN",comp:"30 Mar 2026",rm:""},
+  {sn:27,cat:"Production Readiness (Apollo Application)",mile:"DMS",crit:"Verified",act:"Verified",rag:"GREEN",comp:"27 Mar 2026",rm:""},
+  {sn:28,cat:"Production Readiness (Apollo Application)",mile:"SVZ",crit:"Verified",act:"Verified",rag:"GREEN",comp:"09 Apr 2026",rm:""},
+  {sn:29,cat:"Production Readiness (Apollo Application)",mile:"AWS SFTP",crit:"Verified",act:"Verified",rag:"GREEN",comp:"08 Apr 2026",rm:"Application cleanup completed. Connectivity testing completed except Singtel. NLT and SingTel will continue sharing files the manual way as per BAU after Apollo Go-Live until connectivity established."},
+  {sn:30,cat:"Production Readiness (Apollo Application)",mile:"Splunk",crit:"Verified",act:"Verified",rag:"GREEN",comp:"31 Mar 2026",rm:""},
+  {sn:31,cat:"Production Readiness (Data Migration)",mile:"Service Order (Historical and Active)",crit:"≥ 99% Migrated",act:"",rag:"GREEN",comp:"Target: 28-Apr-26",rm:"E1 completed 100%. Cumulative actuals will be updated after E2."},
+  {sn:32,cat:"Production Readiness (Data Migration)",mile:"Engineering Order (Historical)",crit:"≥ 99% Migrated",act:"",rag:"GREEN",comp:"Target: 28-Apr-26",rm:"E1 completed 100%. Cumulative actuals will be updated after E2."},
+  {sn:33,cat:"Production Readiness (Data Migration)",mile:"Historical Field Jobs",crit:"≥ 99% Migrated",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:34,cat:"Production Readiness (Data Migration)",mile:"Contract Info",crit:"≥ 99% Migrated",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:35,cat:"Production Readiness (Data Migration)",mile:"Incidents (Historical)",crit:"≥ 99% Migrated",act:"",rag:"GREEN",comp:"Target: 28-Apr-26",rm:"E1 completed 100%. Cumulative actuals will be updated after E2."},
+  {sn:36,cat:"Production Readiness (Data Migration)",mile:"SLA Landbase",crit:"≥ 99% Migrated",act:"100%",rag:"GREEN",comp:"17 Apr 2026",rm:"E1 completed 100%."},
+  {sn:37,cat:"Production Readiness (Data Migration)",mile:"Area Boundaries",crit:"≥ 99% Migrated",act:"100%",rag:"GREEN",comp:"17 Apr 2026",rm:"E1 completed 100%."},
+  {sn:38,cat:"Production Readiness (Data Migration)",mile:"Civil Structures",crit:"≥ 99% Migrated",act:"100%",rag:"GREEN",comp:"17 Apr 2026",rm:"E1 completed 100%."},
+  {sn:39,cat:"Production Readiness (Data Migration)",mile:"NetCo, CoLo & MDF",crit:"≥ 99% Migrated",act:"100%",rag:"GREEN",comp:"17 Apr 2026",rm:"E1 completed 100%."},
+  {sn:40,cat:"Production Readiness (Data Migration)",mile:"OSP & ISP Network",crit:"≥ 99% Migrated",act:"100%",rag:"GREEN",comp:"17 Apr 2026",rm:"E1 completed 100%."},
+  {sn:41,cat:"Production Readiness (Data Migration)",mile:"OSP & ISP Network Delta",crit:"≥ 99% Migrated",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:42,cat:"Production Readiness (Data Migration)",mile:"GPON Trails",crit:"≥ 99% Migrated",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:43,cat:"Production Readiness (Data Migration)",mile:"Local Distribution Trails",crit:"≥ 99% Migrated",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:44,cat:"Production Readiness (Data Migration)",mile:"Service Trails",crit:"≥ 99% Migrated",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:45,cat:"Production Readiness (Data Migration)",mile:"Services",crit:"≥ 99% Migrated",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:46,cat:"Production Readiness (Data Migration)",mile:"User UI Verification (Non-GIS)",crit:"No open Sev-1 and Sev-2",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:47,cat:"Production Readiness (Data Migration)",mile:"User UI Verification (GIS)",crit:"No open Sev-1 and Sev-2",act:"",rag:"",comp:"Target: 28-Apr-26",rm:""},
+  {sn:48,cat:"Production Readiness (Retained Systems)",mile:"EVMS Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:49,cat:"Production Readiness (Retained Systems)",mile:"SAP B1 Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:50,cat:"Production Readiness (Retained Systems)",mile:"Coverage Check Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:51,cat:"Production Readiness (Retained Systems)",mile:"HRiQ Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:52,cat:"Production Readiness (Retained Systems)",mile:"Send Quick Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:53,cat:"Production Readiness (Retained Systems)",mile:"MSP Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:55,cat:"Production Readiness (Retained Systems)",mile:"IVR Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:56,cat:"Production Readiness (Retained Systems)",mile:"FMS Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:57,cat:"Production Readiness (Retained Systems)",mile:"PRP Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:64,cat:"Production Readiness (RL Verification)",mile:"SWP Verification",crit:"≥ 1 RL Verified OK without critical issue",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:65,cat:"Production Readiness (RL Verification)",mile:"B2B API Verification (Order Creation)",crit:"≥ 1 RL Verified OK without critical issue",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+];
+
+function clRagBadge(rag){
+  if(!rag) return '<span style="font-size:10px;color:var(--text-muted)">—</span>';
+  if(rag==="GREEN")  return '<span class="rag rg">● Green</span>';
+  if(rag==="AMBER")  return '<span class="rag ra">● Amber</span>';
+  if(rag==="RED")    return '<span class="rag" style="background:#fce4e4;color:#c62828;border:1px solid #ef9a9a">● Red</span>';
+  return '<span class="rag rn">● —</span>';
+}
+
+function buildChecklist(){
+  // Count stats
+  const total=checklistItems.length;
+  const green=checklistItems.filter(i=>i.rag==="GREEN").length;
+  const amber=checklistItems.filter(i=>i.rag==="AMBER").length;
+  const noRag=checklistItems.filter(i=>!i.rag).length;
+
+  // Group by category
+  const cats={};
+  checklistItems.forEach(i=>{
+    if(!cats[i.cat]) cats[i.cat]=[];
+    cats[i.cat].push(i);
+  });
+
+  // Summary bar
+  let h=`<div class="stitle">Go-Live Checklist — 21 Apr 2026</div>`;
+  h+=`<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:stretch;">`;
+  const stats=[
+    {label:"Total Items",val:total,col:"var(--nlt-dark)",bg:"#e8f0fb"},
+    {label:"Green",val:green,col:"#2e7d32",bg:"#e8f5e9"},
+    {label:"Amber",val:amber,col:"#e65100",bg:"#fff3e0"},
+    {label:"Pending / No RAG",val:noRag,col:"#607d8b",bg:"#f5f7f9"},
+  ];
+  stats.forEach(s=>{
+    h+=`<div style="background:${s.bg};border-radius:10px;padding:12px 20px;display:flex;flex-direction:column;gap:2px;min-width:120px;border:1px solid var(--border)">
+      <div style="font-family:var(--font-d);font-size:28px;font-weight:700;color:${s.col}">${s.val}</div>
+      <div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px">${s.label}</div>
+    </div>`;
+  });
+  h+=`</div>`;
+
+  // Table per category
+  Object.entries(cats).forEach(([cat, items])=>{
+    const catGreen=items.filter(i=>i.rag==="GREEN").length;
+    const catAmber=items.filter(i=>i.rag==="AMBER").length;
+    const catTotal=items.length;
+    const catPct=catTotal>0?Math.round((catGreen/catTotal)*100):0;
+    const barCol=catAmber>0?"linear-gradient(90deg,#fb8c00,#e65100)":"linear-gradient(90deg,#66bb6a,#2e7d32)";
+
+    h+=`<div style="background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.05)">`;
+    // Category header
+    h+=`<div style="background:linear-gradient(90deg,#ddeaf8,#eef5fc);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-med)">
+      <div style="font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--nlt-dark);letter-spacing:.4px;text-transform:uppercase">${cat}</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:120px;height:6px;background:#dde6f0;border-radius:3px;overflow:hidden">
+          <div style="width:${catPct}%;height:100%;border-radius:3px;background:${barCol};transition:width .6s"></div>
+        </div>
+        <span style="font-family:var(--font-m);font-size:12px;font-weight:700;color:${catAmber>0?"var(--amber)":"#2e7d32"}">${catGreen}/${catTotal} Green</span>
+      </div>
+    </div>`;
+
+    // Table
+    h+=`<div style="overflow-x:auto"><table class="ops-tbl" style="min-width:900px"><thead><tr>
+      <th style="width:36px;padding-left:12px">#</th>
+      <th>Milestone</th>
+      <th>Criteria</th>
+      <th>Actuals</th>
+      <th>RAG</th>
+      <th>Completion Date</th>
+      <th>Remarks</th>
+    </tr></thead><tbody>`;
+
+    items.forEach(i=>{
+      const isDone=i.act&&i.act!=="";
+      h+=`<tr>
+        <td style="font-family:var(--font-m);font-size:11px;color:var(--text-muted);padding-left:12px;white-space:nowrap">${i.sn}</td>
+        <td style="font-weight:500">${isDone?'<span style="color:#1565c0;margin-right:4px">✔</span>':''}${i.mile}</td>
+        <td class="sc">${i.crit}</td>
+        <td class="sc" style="font-weight:${isDone?'600':'400'};color:${isDone?'#2e7d32':'var(--text-muted)'}">${i.act||'—'}</td>
+        <td>${clRagBadge(i.rag)}</td>
+        <td class="dc" style="white-space:nowrap">${i.comp}</td>
+        <td class="rc">${i.rm||''}</td>
+      </tr>`;
+    });
+    h+=`</tbody></table></div></div>`;
+  });
+
+  document.getElementById("checklist").innerHTML=h;
 }
 
 // ── INIT ──
