@@ -264,7 +264,7 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
     </div>
   </div>
   <div class="hdr-meta">
-    <div class="hdr-date">📅 Status: 20 Apr 2026</div>
+    <div class="hdr-date">📅 Status: 21 Apr 2026</div>
     <div class="hdr-badge">🚀 Go-Live: 29 Apr 2026</div>
   </div>
 </header>
@@ -282,7 +282,7 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
     <span style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:8px;border-radius:2px;background:linear-gradient(90deg,#43a047,#2e7d32);display:inline-block"></span>On Track</span>
     <span style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:8px;border-radius:2px;background:linear-gradient(90deg,#fb8c00,#e65100);display:inline-block"></span>At Risk</span>
     <span style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:8px;border-radius:2px;background:#cfd8dc;border:1px solid #b0bec5;display:inline-block"></span>Not Started</span>
-    <span style="display:flex;align-items:center;gap:5px"><span style="width:2px;height:14px;background:var(--today-col);display:inline-block;margin:0 4px"></span><span style="color:var(--today-col);font-weight:600">Today (20 Apr)</span></span>
+    <span style="display:flex;align-items:center;gap:5px"><span style="width:2px;height:14px;background:var(--today-col);display:inline-block;margin:0 4px"></span><span style="color:var(--today-col);font-weight:600">Today (21 Apr)</span></span>
     <span style="display:flex;align-items:center;gap:5px"><span style="width:20px;height:8px;border-radius:2px;background:linear-gradient(90deg,#0288d1,#01579b);display:inline-flex;align-items:center;justify-content:flex-end;padding-right:2px;"><span style="color:rgba(255,255,255,0.95);font-size:7px;font-weight:900;line-height:1;">✔</span></span>Completed task</span>
     <span style="margin-left:6px">▶ Click category / sub-menu to expand · Hover bars for details</span>
   </div>
@@ -309,13 +309,13 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
 const tasks=[
  // ── TRAINING ──
  {o:"Jenney",m:"Training",s:"End User Training (EUT)",a:"End User Training (EUT) - SPL GIS",r:"Completed",S:"2026-03-23",E:"2026-04-20",st:"Completed",rm:"Completed 100% on 15-Apr-2026.",p:100,inTraining:true},
- {o:"Jenney",m:"Training",s:"End User Training (EUT)",a:"End User Training (EUT) - ILT GIS",r:"Green",S:"2026-04-09",E:"2026-04-24",st:"67% complete",rm:"",p:66.667,inTraining:true},
+ {o:"Jenney",m:"Training",s:"End User Training (EUT)",a:"End User Training (EUT) - ILT GIS",r:"Green",S:"2026-04-09",E:"2026-04-24",st:"75% complete",rm:"",p:75,inTraining:true},
  {o:"Jenney",m:"Training",s:"System Admin KT (SAKT)",a:"System Administrators Knowledge Transfer (SAKT)",r:"Green",S:"2026-05-05",E:"2026-05-06",st:"Post-go-live. Not started",rm:"Post-go-live training. SAKT-ILT: 3 WFM modules had been scheduled on 5-May and 6-May-2026.",p:0,excludeFromTrainingPct:true},
  // ── COMMS ──
  {o:"P&A",m:"Comms",s:"Go-Live Comms (NLT Org-Wide)",a:"Comms #1",r:"Completed",S:"2026-04-02",E:"2026-04-02",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Comms",s:"Go-Live Comms (NLT Org-Wide)",a:"Comms #2",r:"Completed",S:"2026-04-16",E:"2026-04-16",st:"Completed",rm:"Sent out on 16-Apr.",p:100},
  {o:"P&A",m:"Comms",s:"Go-Live Comms (NLT Org-Wide)",a:"Comms #3",r:"Green",S:"2026-04-27",E:"2026-04-27",st:"90%",rm:"Finalised, ready to be sent on 27-Apr.",p:90},
- {o:"P&A",m:"Comms",s:"Go-Live Comms (NLT Org-Wide)",a:"Go-Live Announcement",r:"Green",S:"2026-04-29",E:"2026-04-29",st:"80%",rm:"Review in progress.",p:80},
+ {o:"P&A",m:"Comms",s:"Go-Live Comms (NLT Org-Wide)",a:"Go-Live Announcement",r:"Green",S:"2026-04-29",E:"2026-04-29",st:"70%",rm:"Internal review in progress.",p:70},
  {o:"P&A",m:"Comms",s:"External Portal Banner",a:"SWP",r:"Completed",S:"2026-04-01",E:"2026-04-10",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Comms",s:"External Portal Banner",a:"NCE Portal",r:"Completed",S:"2026-04-01",E:"2026-04-07",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Comms",s:"External Portal Banner",a:"FRC Portal",r:"Completed",S:"2026-04-01",E:"2026-04-10",st:"Completed",rm:"",p:100},
@@ -326,15 +326,14 @@ const tasks=[
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #1",r:"Completed",S:"2026-03-13",E:"2026-03-13",st:"Completed",rm:"Appointment slots blocking",p:100},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #2",r:"Completed",S:"2026-04-03",E:"2026-04-03",st:"Completed",rm:"Cutover/Switchover Calendar",p:100},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #3",r:"Completed",S:"2026-04-09",E:"2026-04-09",st:"Completed",rm:"Maintenance Window Calendar E1 & E2. Pending NLT review.",p:100},
- {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #4",r:"Green",S:"2026-04-20",E:"2026-04-20",st:"80%",rm:"Reviewed with NLT PMO on 20-Apr, 4pm. Pending to be sent by NLT.",p:80},
+ {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #4",r:"Green",S:"2026-04-23",E:"2026-04-23",st:"80%",rm:"Reviewed with NLT PMO on 20-Apr, 4pm. Pending to be sent by NLT.",p:80},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #5",r:"Not started",S:"2026-04-28",E:"2026-04-28",st:"Not started",rm:"Cutover/Switchover start at 23:00",p:0},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #6",r:"Not started",S:"2026-04-28",E:"2026-04-28",st:"Not started",rm:"Go Ahead for Cutover/Switchover",p:0},
  {o:"P&A",m:"Comms",s:"RL & IMDA Comms",a:"RL & IMDA Comms #7: Go-Live",r:"Not started",S:"2026-04-29",E:"2026-04-29",st:"Not started",rm:"",p:0},
  {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #1",r:"Completed",S:"2026-04-01",E:"2026-04-06",st:"Completed",rm:"Cutover plan and contractor involvement. 1st comms sent on 6-Apr-2026.",p:100},
  {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #2",r:"Completed",S:"2026-04-06",E:"2026-04-06",st:"Completed",rm:"Heads up on onboarding. User guide for setting up account.",p:100},
  {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #3",r:"Completed",S:"2026-04-14",E:"2026-04-14",st:"Completed",rm:"Share User Setup status per contractor in CyberArk. Follow-up for closure of remaining. User guide to perform Application Access check.",p:100},
- {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #4",r:"Green",S:"2026-04-20",E:"2026-04-20",st:"In progress",rm:"Cutover plan (duration, start and end time). Activity on Tuesday 28-Apr 16:00-18:00 - Contractor involvement in sanity test post migration of inflights. Nominated Contractor Controller & FE will be guided by NLT Ambassadors.",p:0},
- {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #5",r:"Not started",S:"2026-04-27",E:"2026-04-27",st:"Not started",rm:"Reminder about NLT ambassadors for post migration sanity test on 28-Apr 16:00-18:00.",p:0},
+ {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #4",r:"Green",S:"2026-04-24",E:"2026-04-24",st:"In progress",rm:"To be sent after Contractor user verification is completed.",p:0},
  {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Activity - 28 Apr 4PM-6PM",r:"Not started",S:"2026-04-28",E:"2026-04-28",st:"Not started",rm:"Check task assignments for Patching, Installation and TT Work Orders post migration.",p:0},
  {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #6",r:"Not started",S:"2026-04-28",E:"2026-04-28",st:"Not started",rm:"Key Contractor PICs: NLT GO decision on the night of 28-Apr 10PM.",p:0},
  {o:"P&A",m:"Comms",s:"Contractors Comms",a:"Contractors Comms #7",r:"Not started",S:"2026-04-29",E:"2026-04-29",st:"Not started",rm:"Key Contractor PICs: Final Go-No-Go after RL Switchover.",p:0},
@@ -347,7 +346,7 @@ const tasks=[
  {o:"P&A",m:"Comms",s:"Deployment Team Comms",a:"Heads-up to NLT PICs on user access",r:"Completed",S:"2026-03-25",E:"2026-03-25",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Comms",s:"Deployment Team Comms",a:"App specific comms to NLT PICs",r:"Completed",S:"2026-04-01",E:"2026-04-01",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Comms",s:"Deployment Team Comms",a:"Heads up for E1 User Verifications",r:"Completed",S:"2026-04-09",E:"2026-04-09",st:"Completed",rm:"",p:100},
- {o:"P&A",m:"Comms",s:"Deployment Team Comms",a:"Heads up for E2 User Verifications",r:"Completed",S:"2026-04-20",E:"2026-04-20",st:"Completed",rm:"",p:100},
+ {o:"P&A",m:"Comms",s:"Deployment Team Comms",a:"Heads up for E2 User Verifications",r:"Completed",S:"2026-04-20",E:"2026-04-21",st:"Completed",rm:"",p:100},
  // ── PROD ENV SETUP ──
  {o:"P&A",m:"Prod Env Setup",s:"App clean-up & deployment",a:"OSM App clean-up & deployment",r:"Completed",S:"2026-03-19",E:"2026-04-07",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App clean-up & deployment",a:"UIM App clean-up & deployment",r:"Completed",S:"2026-03-19",E:"2026-04-07",st:"Completed",rm:"",p:100},
@@ -384,11 +383,11 @@ const tasks=[
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"OSM App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-08",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"UIM App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-10",st:"Completed",rm:"User verification closed, remaining 1 user to test after Go-live",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"vxField Web user verification",r:"Amber",S:"2026-03-19",E:"2026-04-21",st:"84%",rm:"NLT user verification: 100% completed (112). Contractor user verification: Total: 100 | Completed: 67 | Remaining: 33 to complete by 21-Apr-2026.",p:84},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"vxField Mobile App user verification",r:"Amber",S:"2026-04-10",E:"2026-04-22",st:"43%",rm:"Accruent Mobile App MFA login issue: Resolved. NLT FE verification: Total: 36 | Completed: 28 | Remaining: 8 to complete by 21-Apr-2026. Contractor verification: Total: 202 | Completed: 74 | Remaining: 128 to complete by 22-Apr-2026.",p:43},
+ {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"vxField Mobile App user verification",r:"Amber",S:"2026-04-10",E:"2026-04-22",st:"61%",rm:"Accruent Mobile App MFA login issue: Resolved. NLT FE verification: Total: 36 | Completed: 28 | Remaining: 8 to complete by 22-Apr-2026. Contractor verification: Total: 202 | Completed: 118 | Remaining: 84 to complete by 22-Apr-2026.",p:61},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"iValua App user verification",r:"Completed",S:"2026-03-23",E:"2026-04-10",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"Helix App user verification",r:"Completed",S:"2026-03-23",E:"2026-04-07",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"IRD (plus Qlik) App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-17",st:"Completed",rm:"User verification closed, remaining 2 user to test after Go-live (OIM=1; PBDP=1).",p:100},
- {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"SWP App user verification",r:"RED",S:"2026-03-19",E:"2026-04-17",st:"91%",rm:"NLT user verification: 100% completed. RL Admin user verification: Total: 9 | Completed: 7 | Remaining: 2 - StarHub: 1 - Tata Communications: 1.",p:91},
+ {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"SWP App user verification",r:"Amber",S:"2026-03-19",E:"2026-04-22",st:"91%",rm:"NLT user verification: 100% completed. RL Admin user verification: Total: 9 | Completed: 7 | Remaining: 2 - StarHub: 1 - Tata Communications: 1.",p:91},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"Internal Portal App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-10",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"External Portal App user verification",r:"Completed",S:"2026-03-19",E:"2026-04-08",st:"Completed",rm:"",p:100},
  {o:"P&A",m:"Prod Env Setup",s:"App user verification",a:"SVZ App user verification",r:"Completed",S:"2026-03-23",E:"2026-04-09",st:"Completed",rm:"User verification completed. There is a common issue reported related to launch of web application from CyberArk. There is a temporary workaround. This will be fixed post Go-Live.",p:100},
@@ -450,7 +449,7 @@ function subPct(menu,sub){
   return ts.length?Math.round(ts.reduce((a,t)=>a+t.p,0)/ts.length):0;
 }
 
-const TODAY=new Date("2026-04-20"),GS=new Date("2026-03-10"),GE=new Date("2026-05-12");
+const TODAY=new Date("2026-04-21"),GS=new Date("2026-03-10"),GE=new Date("2026-05-12");
 const GD=Math.ceil((GE-GS)/86400000);
 
 function x2p(s){const d=new Date(s);return Math.max(0,Math.min(100,(d-GS)/(GE-GS)*100))}
@@ -645,16 +644,16 @@ function buildOps(){
         </div>
         <div class="ops-act" id="${sid}">
           <table class="ops-tbl">
-            <thead><tr><th>Activity</th><th>RAG</th><th>Start</th><th>End</th><th>Status / %</th><th>Remarks</th></tr></thead>
+            <thead><tr><th>Activity</th><th>RAG</th><th>Start</th><th>End</th><th>% Completion</th><th>Remarks</th></tr></thead>
             <tbody>`;
       ts.forEach(t=>{
-        const pstr=t.p>0&&t.r!=="Completed"?` <span style="font-family:var(--font-m);font-weight:700;color:${pctCol(t.p)}">(${t.p}%)</span>`:"";
+        const pstr=t.r==="Completed"?`<span style="font-family:var(--font-m);font-weight:700;color:#2e7d32">100%</span>`:(t.p>0?`<span style="font-family:var(--font-m);font-weight:700;color:${pctCol(t.p)}">${t.p}%</span>`:`<span style="font-family:var(--font-m);color:var(--text-muted)">0%</span>`);
         h+=`<tr>
           <td>${t.r==="Completed"?'<span style="color:#1565c0;margin-right:4px">✔</span>':''}${t.a}</td>
           <td>${rbadge(t.r)}</td>
           <td class="dc">${fd(t.S)}</td>
           <td class="dc">${fd(t.E)}</td>
-          <td class="sc">${t.st||""}${pstr}</td>
+          <td class="sc">${pstr}</td>
           <td class="rc">${t.rm||""}</td>
         </tr>`;
       });
@@ -742,7 +741,7 @@ function buildExec(){
     <div class="tl-item"><div class="tl-dot past"></div><div class="tl-date">13 Mar 2026</div><div class="tl-ev">RL & IMDA Comms #1 — Appointment Slots Blocking</div><div class="tl-note">Completed</div></div>
     <div class="tl-item"><div class="tl-dot past"></div><div class="tl-date">19 Mar 2026</div><div class="tl-ev">Prod Env Setup commences — App clean-up & deployment</div><div class="tl-note">All app deployments and user role matrices completed</div></div>
     <div class="tl-item"><div class="tl-dot past"></div><div class="tl-date">30 Mar – 10 Apr</div><div class="tl-ev">Go-Live Comms #1 · Retained Systems Comms #1 & #2</div><div class="tl-note">Completed</div></div>
-    <div class="tl-item"><div class="tl-dot today"></div><div class="tl-date" style="color:#2e7d32;font-weight:700">20 Apr 2026 — TODAY</div><div class="tl-ev">Status snapshot · E1 Migration 100% complete (all checkpoints signed off) · IRD verification: Completed · EUT SPL GIS: 100%</div><div class="tl-note">vxField Web: 84% (33 contractors pending) · vxField Mobile: 43% (ongoing) · SWP: 91% RED (RL Admin pending) · ILT GIS: 67%</div></div>
+    <div class="tl-item"><div class="tl-dot today"></div><div class="tl-date" style="color:#2e7d32;font-weight:700">21 Apr 2026 — TODAY</div><div class="tl-ev">Status snapshot · E1 Migration 100% complete (all checkpoints signed off) · IRD verification: Completed · EUT SPL GIS: 100%</div><div class="tl-note">vxField Web: 84% (33 contractors pending) · vxField Mobile: 43% (ongoing) · SWP: 91% RED (RL Admin pending) · ILT GIS: 67%</div></div>
     <div class="tl-item"><div class="tl-dot past"></div><div class="tl-date">10–17 Apr 2026</div><div class="tl-ev">E1 Migration fully completed · All checkpoints signed off</div><div class="tl-note">E1 GIS, Non-GIS, Extraction all completed and verified</div></div>
     <div class="tl-item"><div class="tl-dot past"></div><div class="tl-date">16 Apr 2026</div><div class="tl-ev">Go-Live Comms #2 sent · EUT ILT GIS 67% (sessions ongoing to 24-Apr)</div></div>
     <div class="tl-item"><div class="tl-dot future"></div><div class="tl-date">22–28 Apr 2026</div><div class="tl-ev">E2 Migration window · Go No-Go PONR gate (28 Apr)</div><div class="tl-note">Critical decision point</div></div>
@@ -763,7 +762,7 @@ function buildExec(){
         <div class="kpi-s">${ambTasks.length?ambTasks.map(t=>t.a.split(' ').slice(0,2).join(' ')).join(', '):'All previous items resolved'}</div>
       </div></div>
       <div class="kpi"><div class="kpi-ico b">⏳</div><div>
-        <div class="kpi-v" style="color:var(--nlt-dark)">9</div>
+        <div class="kpi-v" style="color:var(--nlt-dark)">8</div>
         <div class="kpi-l">Days to Go-Live</div>
         <div class="kpi-s">29 Apr 2026</div>
       </div></div>
