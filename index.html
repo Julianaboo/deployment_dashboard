@@ -179,12 +179,12 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
 .ops-tbl th{padding:7px 12px;text-align:left;font-size:10px;font-weight:700;color:var(--text-muted);
   text-transform:uppercase;letter-spacing:.7px;background:#f0f4f8;border-bottom:1px solid var(--border)}
 .ops-tbl th:first-child{padding-left:54px}
-.ops-tbl td{padding:8px 12px;font-size:12px;color:var(--text-pri);border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top}
+.ops-tbl td{padding:8px 12px;font-size:12px;color:var(--text-pri);border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top;word-wrap:break-word;overflow-wrap:break-word}
 .ops-tbl td:first-child{padding-left:54px}
 .ops-tbl tr:hover td{background:#f0f6ff}
 .ops-tbl td.dc{font-family:var(--font-m);font-size:11px;color:var(--text-sec);white-space:nowrap}
-.ops-tbl td.sc{font-size:11px;color:var(--text-sec);max-width:160px}
-.ops-tbl td.rc{font-size:11px;color:var(--text-sec);max-width:240px;line-height:1.5}
+.ops-tbl td.sc{font-size:11px;color:var(--text-sec)}
+.ops-tbl td.rc{font-size:11px;color:var(--text-sec);line-height:1.5}
 
 /* ════════════════════════════════
    EXECUTIVE DASHBOARD
@@ -260,7 +260,7 @@ body{background:var(--bg-page);color:var(--text-pri);font-family:var(--font-b);m
   <div class="hdr-brand">
     <div class="hdr-logo">APL</div>
     <div>
-      <div class="hdr-title"><span>Apollo</span> Phase 2.0 Deployment Dashboard</div>
+      <div class="hdr-title">Apollo Phase 2.0 Deployment Dashboard</div>
     </div>
   </div>
   <div class="hdr-meta">
@@ -650,7 +650,8 @@ function buildOps(){
           </div>
         </div>
         <div class="ops-act" id="${sid}">
-          <table class="ops-tbl">
+          <table class="ops-tbl" style="table-layout:fixed;width:100%">
+            <colgroup><col style="width:32%"><col style="width:9%"><col style="width:10%"><col style="width:10%"><col style="width:9%"><col style="width:30%"></colgroup>
             <thead><tr><th>Activity</th><th>RAG</th><th>Start</th><th>End</th><th>% Completion</th><th>Remarks</th></tr></thead>
             <tbody>`;
       ts.forEach(t=>{
@@ -844,8 +845,8 @@ const checklistItems = [
   {sn:55,cat:"Production Readiness (Retained Systems)",mile:"IVR Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
   {sn:56,cat:"Production Readiness (Retained Systems)",mile:"FMS Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
   {sn:57,cat:"Production Readiness (Retained Systems)",mile:"PRP Deployment",crit:"Completed",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
-  {sn:64,cat:"Production Readiness (RL Verification)",mile:"SWP Verification",crit:"≥ 1 RL Verified OK without critical issue",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
-  {sn:65,cat:"Production Readiness (RL Verification)",mile:"B2B API Verification (Order Creation)",crit:"≥ 1 RL Verified OK without critical issue",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:57,cat:"Production Readiness (RL Verification)",mile:"SWP Verification",crit:"≥ 1 RL Verified OK without critical issue",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
+  {sn:58,cat:"Production Readiness (RL Verification)",mile:"B2B API Verification (Order Creation)",crit:"≥ 1 RL Verified OK without critical issue",act:"",rag:"",comp:"Target: 29-Apr-26",rm:""},
 ];
 
 function clRagBadge(rag){
@@ -908,8 +909,8 @@ function buildChecklist(){
     </div>`;
 
     // Table
-    h+=`<div style="overflow-x:auto"><table class="ops-tbl" style="min-width:900px"><thead><tr>
-      <th style="width:36px;padding-left:12px">#</th>
+    h+=`<div style="overflow-x:auto"><table class="ops-tbl" style="table-layout:fixed;width:100%"><colgroup><col style="width:4%"><col style="width:22%"><col style="width:12%"><col style="width:10%"><col style="width:8%"><col style="width:11%"><col style="width:33%"></colgroup><thead><tr>
+      <th style="padding-left:12px">#</th>
       <th>Milestone</th>
       <th>Criteria</th>
       <th>Actuals</th>
